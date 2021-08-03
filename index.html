@@ -1,13 +1,17 @@
 <html>
+<script type="text/javascript" src="sound-onclick.js"></script>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+
 <style>
 html, body
 {
     height: 100%;
     margin:0;
     padding:0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 div {
@@ -24,12 +28,53 @@ div img {
     bottom:0;
     margin:auto;
 }
+
+.bg {
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 </style>
-</style>
+<script>
+	function Action()
+	{
+		var background = new Image();
+		
+		if (document.body.background == "giphy.gif")
+		{
+			background.src ="";
+			document.getElementById('tune').pause()
+		}
+		else if (document.body.background == "")
+		{
+			background.src = "giphy.gif"; 
+			document.getElementById('tune').play()
+		}
+		else
+		{
+			document.getElementById('tune').pause()
+		}
+		
+		document.body.background = background.src; 
+	}
+	</script>
+
+
 </head>
 <body>
 
-<div><img src="clayton.png"></div>
+<audio preload="auto" loop id="tune">
+	<source src="spaceandsound.mp3" type="audio/ogg">
+</audio> 
+
+
+
+<div><img onclick="Action()" src="clayton.png"></div>
 
 </body>
 </html>
